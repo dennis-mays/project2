@@ -13,13 +13,10 @@ body {
 }
 
 header {
+    text-align: center;
     background: #2b140e;
     color: #fbf4e1;
     padding: 0.7rem;
-}
-
-header {
-    text-align: center;
 }
 
 section {
@@ -71,6 +68,11 @@ section {
 
 .controls a {
     padding: 0 3rem;
+}
+
+a {
+    text-decoration: none;
+    font-size: 2rem;
 }
 
 @media screen and (min-width: 700px) {

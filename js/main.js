@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", init);
 
-let autoPlay = null;
-let idleTimer = null;
+let autoPlay = "";
+let idleTimer = "";
 
 function init() {
     //create shortcut vars
