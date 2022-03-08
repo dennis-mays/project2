@@ -1,5 +1,8 @@
 document.addEventListener("DOMContentLoaded", init);
 
+let autoPlay = null;
+let idleTimer = null;
+
 function init() {
     //create shortcut vars
     const back_btn = document.querySelector(".back-btn");
@@ -26,24 +29,38 @@ function init() {
 
     //show the controls
     controls.style.display = "block";
+
+    // set autoplay on page load with 5 second change
+    autoPlay = setInterval(autoSlide, 5000, "next-btn");
 }
 
 function changeSlide(e) {
     // stop link from trying to reload page
     e.preventDefault();
 
-    //shortcut vars
+    // stop slides from auto playing if user clicks controls
+    if (autoPlay) {
+        clearInterval(autoPlay);
+    }
+
+    // call function to change slides
+    autoSlide(e.target.className);
+}
+
+// function for auto advancing of slides
+function autoSlide(play) {
+    // shortcut vars
     const frame = document.querySelector(".frame");
     const slides = frame.querySelectorAll("img");
     const caption = document.querySelector(".caption");
     let showing = document.querySelector(".current");
     let nextUp = "";
 
-    if (e.target.className == "next-btn") {
+    if (play === "next-btn") {
         nextUp = showing.nextElementSibling;
     }
 
-    if (e.target.className == "back-btn") {
+    if (play === "back-btn") {
         nextUp = showing.previousElementSibling;
     }
 
